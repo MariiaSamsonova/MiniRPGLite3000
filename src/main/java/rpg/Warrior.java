@@ -1,2 +1,4 @@
-package rpg;public class Warrior {
+package rpg;
+
+public class Warrior extends Hero {
 }

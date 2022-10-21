@@ -1,2 +1,4 @@
-package rpg;public class Hunter {
+package rpg;
+
+public class Hunter extends Hero{
 }

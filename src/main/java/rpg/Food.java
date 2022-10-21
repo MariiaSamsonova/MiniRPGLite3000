@@ -1,2 +1,4 @@
-package rpg;public class Food {
+package rpg;
+
+public class Food extends Combatant{
 }

@@ -1,8 +1,11 @@
 package utils;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-public class GUIParser extends Application {
+import rpg.*;
+
+public class GUIParser extends Application {//TODO
 
     public static void main(String[] args) {
         launch(args);
@@ -10,6 +13,6 @@ public class GUIParser extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        
+
     }
 }

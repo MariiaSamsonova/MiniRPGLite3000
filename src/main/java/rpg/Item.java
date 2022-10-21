@@ -1,2 +1,4 @@
-package rpg;public class Item {
+package rpg;
+
+abstract class Item {//TODO добавить доспехи
 }

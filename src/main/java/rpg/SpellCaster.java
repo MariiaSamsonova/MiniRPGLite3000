@@ -1,2 +1,4 @@
-package rpg;public class SpellCaster {
+package rpg;
+
+abstract class SpellCaster extends Hero {
 }

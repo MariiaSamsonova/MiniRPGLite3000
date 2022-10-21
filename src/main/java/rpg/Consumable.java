@@ -1,2 +1,4 @@
-package rpg;public class Consumable {
+package rpg;
+
+abstract class Consumable extends Item{
 }

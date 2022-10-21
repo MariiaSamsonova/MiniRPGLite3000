@@ -1,2 +1,4 @@
-package rpg;public class Weapon {
+package rpg;
+
+public class Weapon extends Item{
 }

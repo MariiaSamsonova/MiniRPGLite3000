@@ -1,2 +1,4 @@
-package rpg;public class Healer {
+package rpg;
+
+public class Healer extends Hero {
 }
