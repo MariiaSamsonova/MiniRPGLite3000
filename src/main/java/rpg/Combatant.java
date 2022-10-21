@@ -1,6 +1,6 @@
 package rpg;
 
-abstract class Combatant {
+public abstract class Combatant {
     private int livesNumber;
     public abstract void makeMove(Combatant combatant); //return the amount of damage
                                                         // если противник не выбран ход по типу: похилить, покушать, надеть доспехи
