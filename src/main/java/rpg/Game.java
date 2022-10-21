@@ -62,16 +62,16 @@ public class Game {
         {
             return null;
         }
-        return (Enemy) this.combatants.get(getPlayerNumber() + ip.getInteger());
+        return (Enemy) this.combatants.get(getPlayersNumber() + ip.getInteger());
     }
 
     public int getEnemiesNumber() {
-        return this.combatants.size() - getPlayerNumber();
+        return this.combatants.size() - getPlayersNumber();
     }
 
-    public int getPlayerNumber() {
+    public int getPlayersNumber() {
         int n = 0;
-        for (int i = 0; this.combatants.get(i) instanceof Hero; i++) {
+        for (int i = 0; i < this.combatants.size() && this.combatants.get(i) instanceof Hero ; i++) {
             if (this.combatants.get(i).isAlive()) {
                 n++;
             }
@@ -82,7 +82,7 @@ public class Game {
     public List setMoveOrder() {
 
         List<Integer> order = new ArrayList<Integer>();
-        for (int i = this.combatants.size(); i > 0; i--) {
+        for (int i = this.combatants.size()-1; i >= 0; i--) {
             order.add(i);
         }
         Collections.shuffle(order);
