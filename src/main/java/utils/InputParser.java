@@ -1,7 +1,9 @@
 package utils;
 
 public interface InputParser {
-    public static int getInteger() {//TODO
-        return 0;
-    }
+    public int getInteger();
+
+    public void print(String alert);
+
+    public String getString();
 }

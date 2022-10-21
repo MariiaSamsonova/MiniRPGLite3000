@@ -56,11 +56,13 @@ public class Game {
     }
 
     public Enemy choseEnemy() {
-        if (ConsoleParser.getInteger() == 0)
+        InputParser ip = new ConsoleParser();
+        ip.print("Enter the number of enemy whom you want to attack, or 0 for other move");
+        if (ip.getInteger() == 0)
         {
             return null;
         }
-        return (Enemy) this.combatants.get(getPlayerNumber() + ConsoleParser.getInteger());
+        return (Enemy) this.combatants.get(getPlayerNumber() + ip.getInteger());
     }
 
     public int getEnemiesNumber() {
