@@ -1,4 +1,4 @@
 package rpg;
 
-abstract class Consumable extends Item{
+abstract class Consumable extends Item {
 }

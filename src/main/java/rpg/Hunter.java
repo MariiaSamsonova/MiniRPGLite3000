@@ -1,8 +1,8 @@
 package rpg;
 
-public class Hunter extends Hero{
+public class Hunter extends Hero {
     @Override
-    public void makeMove(Combatant combatant) {
+    public void makeMove(Game game) {
 
     }
 }

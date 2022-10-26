@@ -1,10 +1,11 @@
 package rpg;
 
+import utils.ConsoleParser;
+import utils.InputParser;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import utils.*;
 
 public class Game {
 
@@ -21,52 +22,58 @@ public class Game {
     }
 
     public void setEnemies(int n) {
-        for (int i = 0; i < n; i++) {
-            Enemy enemy = createEnemy();// TODO на последнем уровне босс
+        this.combatants = this.combatants.subList(0, getPlayersNumber());
+        for (int i = 0; i < n + this.fight; i++) {
+            Enemy enemy = createEnemy();
             this.combatants.add(enemy);
         }
     }
 
     private Enemy createEnemy() {
         return new Enemy();
+    }// TODO на последнем уровне босс
+
+    public void setHeroes(List<Hero> heroesClasses) {
+        this.combatants.addAll(heroesClasses);
     }
 
-    public void setHeroes(int n, List<String> heroesClasses) {
-        for (int i = 0; i < n; i++) {
-            Hero hero = createHero(heroesClasses.get(i));
-            this.combatants.add(hero);
-        }
-    }
-
-    private Hero createHero(String heroClass) {//TODO enum (или посмотреть паттерны)
+    public static Hero createHero(String heroClass) {//TODO enum (или посмотреть паттерны)
 
         switch (heroClass) {
-            case "Warrior":
+            case "Warrior", "warrior":
                 return new Warrior();
-            case "Mage":
+            case "Mage", "mage":
                 return new Mage();
-            case "Healer":
+            case "Healer", "healer":
                 return new Healer();
-            case "Hunter":
+            case "Hunter", "hunter":
                 return new Hunter();
             default:
                 return null;//no default value
         }
+
 
     }
 
     public Enemy choseEnemy() {
         InputParser ip = new ConsoleParser();
         ip.print("Enter the number of enemy whom you want to attack, or 0 for other move");
-        if (ip.getInteger() == 0)
+        int enemyNumber = ip.getInteger();
+        if (enemyNumber == 0)
         {
             return null;
         }
-        return (Enemy) this.combatants.get(getPlayersNumber() + ip.getInteger());
+        return (Enemy) this.combatants.get(getPlayersNumber() + enemyNumber - 1);
     }
 
     public int getEnemiesNumber() {
-        return this.combatants.size() - getPlayersNumber();
+        int n = 0;
+        for (int i = getPlayersNumber(); i < this.combatants.size(); i++) {
+            if (this.combatants.get(i).isAlive()) {
+                n++;
+            }
+        }
+        return n;
     }
 
     public int getPlayersNumber() {
@@ -91,6 +98,8 @@ public class Game {
     }
 
     public void startNextLevel() {
+        InputParser ip = new ConsoleParser();//TODO or GUIParser
+        ip.print("WIN in the fight №" + (this.fight + 1));
         this.fight++;
     }
 }
