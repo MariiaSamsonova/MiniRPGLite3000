@@ -1,4 +1,6 @@
-package rpg;
+package rpg.combatants;
+
+import rpg.Game;
 
 public /*abstract*/ class Enemy extends Combatant {//TODO добавить рядового монсра и босса
 

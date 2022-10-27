@@ -1,4 +1,7 @@
-package rpg;
+package rpg.combatants;
+
+import rpg.Game;
+import rpg.stuff.equipment.Weapon;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,11 +11,11 @@ public abstract class Hero extends Combatant {
 
 
 
-    List<Equipment> equipment;
+    List<Weapon> weapons;
     public Hero(String name) {
         super(name);
-        this.equipment = new ArrayList<Equipment>();
-        this.equipment.add(new Armor());
+        this.weapons = new ArrayList<Weapon>();
+        //this.equipment.add(new Armor());
     }//each has weapon, armor, food and potion
 
     @Override

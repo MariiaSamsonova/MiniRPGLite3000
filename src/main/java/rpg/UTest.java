@@ -2,6 +2,7 @@ package rpg;
 
 
 import org.junit.jupiter.api.Test;
+import rpg.combatants.Hero;
 
 import java.util.ArrayList;
 import java.util.List;

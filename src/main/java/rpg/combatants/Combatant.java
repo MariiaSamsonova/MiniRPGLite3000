@@ -1,4 +1,6 @@
-package rpg;
+package rpg.combatants;
+
+import rpg.Game;
 
 public abstract class Combatant {
 

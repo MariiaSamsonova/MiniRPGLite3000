@@ -1,5 +1,5 @@
 import rpg.Game;
-import rpg.Hero;
+import rpg.combatants.Hero;
 import utils.InputParser;
 
 import java.util.ArrayList;

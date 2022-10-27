@@ -1,4 +1,4 @@
-package rpg;
+package rpg.combatants;
 
 public class Mage extends Hero {
 

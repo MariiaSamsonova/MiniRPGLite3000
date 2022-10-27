@@ -1,5 +1,7 @@
 package rpg;
 
+import rpg.combatants.*;
+import rpg.stuff.Consumable;
 import utils.ConsoleParser;
 import utils.InputParser;
 
@@ -17,8 +19,8 @@ public class Game {
         this.fight = 0;
         this.combatants = new ArrayList<>();
         this.consumables = new ArrayList<>();
-        consumables.add(new Food());
-        consumables.add(new Potions());
+//        consumables.add(new Food());
+//        consumables.add(new Potions());
     }
 
     public int getFightNumber() {
@@ -53,7 +55,7 @@ public class Game {
             case "Hunter", "hunter", "3":
                 return new Hunter(name);
             default:
-                return null;//no default value
+                return null;
         }
 
     }
@@ -91,7 +93,7 @@ public class Game {
 
     public List setMoveOrder() {
 
-        List<Integer> order = new ArrayList<Integer>();
+        List<Integer> order = new ArrayList<>();
         for (int i = this.combatants.size()-1; i >= 0; i--) {
             order.add(i);
         }
