@@ -8,7 +8,7 @@ import java.util.List;
 public class Main {
 
     InputParser ip;
-    public static void main(String args[]) {//TODO это должно быть в Game но это не точно
+    public static void main(String args[]) throws InterruptedException {//TODO это должно быть в Game но это не точно
         Game game = new Game();
 
         game.ip.print("Enter number of heroes");
@@ -17,10 +17,11 @@ public class Main {
         List<Hero> heroes = new ArrayList<Hero>();
         for (int i = 1; i <= n; i++) {
             Hero hero = null;
-            String name = null;
+
+            game.ip.print("Enter name of hero №" + i);
+            String name = game.ip.getString();
+
             while (hero == null) {
-                game.ip.print("Enter name of hero №" + i);
-                name = game.ip.getString();
                 game.ip.print("Enter class of hero №" + i + " (1 - warrior, 2 - mage, 3 - hunter, 4 - healer)");
                 hero = Game.createHero(game.ip.getString(), name);
             }
@@ -32,11 +33,12 @@ public class Main {
             game.setEnemies(n);
             game.setMoveOrder();
             game.ip.print(game.combatants.toString());
+
+            game.ip.doSomethingToContinue();
+            game.ip.print("Fight №" + game.getFightNumber());
+            Thread.sleep(1500);
             while (game.getPlayersNumber() > 0 && game.getEnemiesNumber() > 0)//1 fight
             {
-                game.ip.doSomethingToContinue();
-                game.ip.print("Fight №" + game.getFightNumber());
-
                 List<Integer> order = game.setMoveOrder();
 
                 for (int i : order) {

@@ -60,7 +60,7 @@ public class Game {
 
     public Enemy choseEnemy() {
         InputParser ip = new ConsoleParser();
-        ip.print("Enter the number of enemy whom you want to attack, or 0 for other move");
+        ip.print("Enter the number of enemy whom you want to attack");
         int enemyNumber = ip.getInteger();
         if (enemyNumber == 0)
         {

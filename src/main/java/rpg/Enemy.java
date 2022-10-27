@@ -18,7 +18,7 @@ public /*abstract*/ class Enemy extends Combatant {//TODO добавить ря�
             {
                 Hero hero = (Hero) game.combatants.get(randomPlayer);
                 System.out.println("Enemy №" + getName() + " hit " + hero.getName());
-                game.combatants.get(randomPlayer).beHit(10);
+                game.combatants.get(randomPlayer).beHit(20);
                 break;
             }
         }
