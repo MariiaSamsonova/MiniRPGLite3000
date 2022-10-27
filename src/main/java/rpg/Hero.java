@@ -1,13 +1,28 @@
 package rpg;
 
-public abstract class Hero extends Combatant {//each has weapon, armor, food and potion
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class Hero extends Combatant {
+
+
+
+
+    List<Equipment> equipment;
+    public Hero(String name) {
+        super(name);
+        this.equipment = new ArrayList<Equipment>();
+        this.equipment.add(new Armor());
+    }//each has weapon, armor, food and potion
 
     @Override
     public void makeMove(Game game)
     {
-        game.choseEnemy().beHit();
+        System.out.println("Player " + this.name + " make move");
+        game.choseEnemy().beHit(50);//TODO разные для разных классов
 
     }
+
 
     //make move
     // атаковать,

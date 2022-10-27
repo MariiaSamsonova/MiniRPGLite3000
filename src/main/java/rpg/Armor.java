@@ -1,4 +1,4 @@
 package rpg;
 
-public class Armor extends Item{
+public class Armor extends Equipment{
 }

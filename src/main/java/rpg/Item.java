@@ -1,4 +1,4 @@
 package rpg;
 
-abstract class Item {//TODO добавить доспехи
+abstract class Item {
 }

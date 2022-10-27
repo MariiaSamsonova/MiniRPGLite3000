@@ -1,14 +1,14 @@
 package utils;
-import rpg.*;
 
 import java.util.Scanner;
 
 
 public class ConsoleParser implements InputParser{
 
+    Scanner sc ;//TODO safescanner
     @Override
     public int getInteger() {
-        Scanner sc = new Scanner(System.in);//TODO safescanner
+        sc = new Scanner(System.in);
         return sc.nextInt();
     }
 
@@ -19,7 +19,14 @@ public class ConsoleParser implements InputParser{
 
     @Override
     public String getString() {
-        Scanner sc = new Scanner(System.in);//TODO safescanner
+        sc = new Scanner(System.in);
         return sc.nextLine();
+    }
+
+    @Override
+    public void doSomethingToContinue() {
+        System.out.println("Press Enter to continue");
+        sc = new Scanner(System.in);
+        sc.nextLine();
     }
 }

@@ -18,11 +18,11 @@ public class UTest {
     {
         ArrayList<String> strings = new ArrayList<>();
         List<Hero> heroesClasses = new ArrayList<Hero>();
-        heroesClasses.add(Game.createHero("Mage")); playersNumber++;
-        heroesClasses.add(Game.createHero("Mage")); playersNumber++;
-        heroesClasses.add(Game.createHero("Hunter")); playersNumber++;
-        heroesClasses.add(Game.createHero("Healer")); playersNumber++;
-        heroesClasses.add(Game.createHero("Warrior")); playersNumber++;
+        heroesClasses.add(Game.createHero("Mage", null)); playersNumber++;
+        heroesClasses.add(Game.createHero("Mage", null)); playersNumber++;
+        heroesClasses.add(Game.createHero("Hunter", null)); playersNumber++;
+        heroesClasses.add(Game.createHero("Healer", null)); playersNumber++;
+        heroesClasses.add(Game.createHero("Warrior", null)); playersNumber++;
 
         game.setHeroes(heroesClasses);
         assertEquals(playersNumber, game.getPlayersNumber());
@@ -37,7 +37,7 @@ public class UTest {
 
         for(int i = 1; i < 5; i++)
         {
-            game.startNextLevel();
+            game.endFight();
             game.setEnemies(playersNumber);
             assertEquals(playersNumber + i, game.getEnemiesNumber());
         }

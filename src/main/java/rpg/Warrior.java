@@ -1,8 +1,9 @@
 package rpg;
 
 public class Warrior extends Hero {
-    @Override
-    public void makeMove(Game game) {
 
+    Warrior(String name){
+        super(name);
+        this.sign = "⚔";//TODO
     }
 }

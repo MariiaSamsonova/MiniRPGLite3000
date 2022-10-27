@@ -8,50 +8,53 @@ import java.util.Collections;
 import java.util.List;
 
 public class Game {
-
+    public static InputParser ip = new ConsoleParser();//TODO or GUIParser| переименовать
     private int fight;
+    private List<Consumable> consumables;
     public List<Combatant> combatants;
 
     public Game() {
         this.fight = 0;
-        this.combatants = new ArrayList<Combatant>();
+        this.combatants = new ArrayList<>();
+        this.consumables = new ArrayList<>();
+        consumables.add(new Food());
+        consumables.add(new Potions());
     }
 
     public int getFightNumber() {
-        return fight;
+        return fight + 1;
     }
 
     public void setEnemies(int n) {
         this.combatants = this.combatants.subList(0, getPlayersNumber());
         for (int i = 0; i < n + this.fight; i++) {
-            Enemy enemy = createEnemy();
+            Enemy enemy = createEnemy(String.valueOf(i + 1));
             this.combatants.add(enemy);
         }
     }
 
-    private Enemy createEnemy() {
-        return new Enemy();
+    private Enemy createEnemy(String name) {
+        return new Enemy(name);
     }// TODO на последнем уровне босс
 
     public void setHeroes(List<Hero> heroesClasses) {
         this.combatants.addAll(heroesClasses);
     }
 
-    public static Hero createHero(String heroClass) {//TODO enum (или посмотреть паттерны)
+    public static Hero createHero(String heroClass, String name) {//TODO enum (или посмотреть паттерны)
 
         switch (heroClass) {
-            case "Warrior", "warrior":
-                return new Warrior();
-            case "Mage", "mage":
-                return new Mage();
-            case "Healer", "healer":
-                return new Healer();
-            case "Hunter", "hunter":
-                return new Hunter();
+            case "Warrior", "warrior", "1":
+                return new Warrior(name);
+            case "Mage", "mage", "2":
+                return new Mage(name);
+            case "Healer", "healer", "4":
+                return new Healer(name);
+            case "Hunter", "hunter", "3":
+                return new Hunter(name);
             default:
                 return null;//no default value
         }
-
 
     }
 
@@ -97,9 +100,18 @@ public class Game {
 
     }
 
-    public void startNextLevel() {
-        InputParser ip = new ConsoleParser();//TODO or GUIParser
-        ip.print("WIN in the fight №" + (this.fight + 1));
+    public void endFight() {
+
+        if(this.getPlayersNumber() > 0){
+            ip.print("WIN in the fight №" + (this.fight + 1));
+            ip.print("Next fight: ");
+        }
+        else {
+            ip.print("GameOver");
+        }
+
         this.fight++;
     }
+
+
 }

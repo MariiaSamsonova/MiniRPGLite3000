@@ -6,4 +6,6 @@ public interface InputParser {
     public void print(String alert);
 
     public String getString();
+
+    public void doSomethingToContinue();
 }
