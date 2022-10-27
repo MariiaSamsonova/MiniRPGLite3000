@@ -1,4 +1,4 @@
-package rpg.stuff.equipment;
+package rpg.stuff.equipment.armor;
 
 public class Shield extends Armor{
 

@@ -1,6 +1,6 @@
-package rpg.stuff.equipment;
+package rpg.stuff.equipment.armor;
 
-public class Armor extends Weapon {
+public class Armor {
 
     private int state;
     double damagePart;

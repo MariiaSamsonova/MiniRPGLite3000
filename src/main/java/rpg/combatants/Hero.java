@@ -1,7 +1,7 @@
 package rpg.combatants;
 
 import rpg.Game;
-import rpg.stuff.equipment.Weapon;
+import rpg.stuff.equipment.weapon.Weapon;
 
 import java.util.ArrayList;
 import java.util.List;

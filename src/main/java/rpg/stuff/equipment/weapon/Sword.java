@@ -1,4 +1,4 @@
-package rpg.stuff.equipment;
+package rpg.stuff.equipment.weapon;
 
 public class Sword extends Weapon {
 
