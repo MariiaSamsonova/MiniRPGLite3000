@@ -1,7 +1,10 @@
 package rpg;
 
+import com.sun.jdi.IntegerValue;
 import rpg.combatants.*;
-import rpg.stuff.Consumable;
+import rpg.stuff.consumables.Consumable;
+import rpg.stuff.consumables.Food;
+import rpg.stuff.consumables.Potions;
 import utils.ConsoleParser;
 import utils.InputParser;
 
@@ -14,13 +17,13 @@ public class Game {
     private int fight;
     private List<Consumable> consumables;
     public List<Combatant> combatants;
+    private Food food;
+    private Potions potions;
 
     public Game() {
         this.fight = 0;
         this.combatants = new ArrayList<>();
         this.consumables = new ArrayList<>();
-//        consumables.add(new Food());
-//        consumables.add(new Potions());
     }
 
     public int getFightNumber() {
@@ -28,7 +31,7 @@ public class Game {
     }
 
     public void setEnemies(int n) {
-        this.combatants = this.combatants.subList(0, getPlayersNumber());
+        this.combatants = this.combatants.subList(0, countHeroes());
         for (int i = 0; i < n + this.fight; i++) {
             Enemy enemy = createEnemy(String.valueOf(i + 1));
             this.combatants.add(enemy);
@@ -41,6 +44,8 @@ public class Game {
 
     public void setHeroes(List<Hero> heroesClasses) {
         this.combatants.addAll(heroesClasses);
+        this.food = new Food(countHeroes());
+        this.potions = new Potions(countHeroes());
     }
 
     public static Hero createHero(String heroClass, String name) {//TODO enum (или посмотреть паттерны)
@@ -62,18 +67,14 @@ public class Game {
 
     public Enemy choseEnemy() {
         InputParser ip = new ConsoleParser();
-        ip.print("Enter the number of enemy whom you want to attack");
+        ip.print("Enter the number of enemy whom you want to hit");
         int enemyNumber = ip.getInteger();
-        if (enemyNumber == 0)
-        {
-            return null;
-        }
-        return (Enemy) this.combatants.get(getPlayersNumber() + enemyNumber - 1);
+        return (Enemy) this.combatants.get(countHeroes() + enemyNumber - 1);
     }
 
-    public int getEnemiesNumber() {
+    public int countEnemies() {
         int n = 0;
-        for (int i = getPlayersNumber(); i < this.combatants.size(); i++) {
+        for (int i = countHeroes(); i < this.combatants.size(); i++) {
             if (this.combatants.get(i).isAlive()) {
                 n++;
             }
@@ -81,9 +82,9 @@ public class Game {
         return n;
     }
 
-    public int getPlayersNumber() {
+    public int countHeroes() {
         int n = 0;
-        for (int i = 0; i < this.combatants.size() && this.combatants.get(i) instanceof Hero ; i++) {
+        for (int i = 0; i < this.combatants.size() && this.combatants.get(i) instanceof Hero; i++) {
             if (this.combatants.get(i).isAlive()) {
                 n++;
             }
@@ -94,7 +95,7 @@ public class Game {
     public List setMoveOrder() {
 
         List<Integer> order = new ArrayList<>();
-        for (int i = this.combatants.size()-1; i >= 0; i--) {
+        for (int i = this.combatants.size() - 1; i >= 0; i--) {
             order.add(i);
         }
         Collections.shuffle(order);
@@ -104,11 +105,10 @@ public class Game {
 
     public void endFight() {
 
-        if(this.getPlayersNumber() > 0){
+        if (this.countHeroes() > 0) {
             ip.print("WIN in the fight №" + (this.fight + 1));
             ip.print("Next fight: ");
-        }
-        else {
+        } else {
             ip.print("GameOver");
         }
 
@@ -116,4 +116,16 @@ public class Game {
     }
 
 
+    public Hero choseHero() {
+        InputParser ip = new ConsoleParser();
+        ip.print("Enter the name of hero whom you want to heal");
+        String heroName = ip.getString();
+        for (Combatant hero : this.combatants) {
+            if (hero.getName().equals(heroName)) {
+                return (Hero) hero;
+            }
+            if (hero instanceof Enemy) return null;
+        }
+        return null;
+    }
 }

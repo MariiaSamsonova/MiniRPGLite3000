@@ -1,12 +1,18 @@
 package rpg.stuff.equipment.weapon;
 
-public class Staff extends Weapon{
+import rpg.combatants.Hero;
 
-    Staff()
+public abstract class Staff extends Weapon{
+    int heal;
+    public Staff()
     {
-        {
-            this.plusDamage += 25;
-        }
+        this.plusDamage += 10;
+        this.heal = 10;
+        this.sign = "⚚";
     }
+
+
+
+
 
 }

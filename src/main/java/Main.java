@@ -29,15 +29,15 @@ public class Main {
         }
         game.setHeroes(heroes);
 
-        while (game.getFightNumber() < 5 && game.getPlayersNumber() > 0) {//default number of fights = 5 TODO set number of fights
+        while (game.getFightNumber() < 5 && game.countHeroes() > 0) {//default number of fights = 5 TODO set number of fights
             game.setEnemies(n);
             game.setMoveOrder();
             game.ip.print(game.combatants.toString());
 
             game.ip.doSomethingToContinue();
             game.ip.print("Fight №" + game.getFightNumber());
-            Thread.sleep(1500);
-            while (game.getPlayersNumber() > 0 && game.getEnemiesNumber() > 0)//1 fight
+            Thread.sleep(1000);
+            while (game.countHeroes() > 0 && game.countEnemies() > 0)//1 fight
             {
                 List<Integer> order = game.setMoveOrder();
 

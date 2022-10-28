@@ -27,6 +27,10 @@ public abstract class Combatant {
 
     public void beHit(int percent) {
         this.health -= percent;
+        if(this.health < 0)
+        {
+            this.health = 0;
+        }
         isAlive();
     }
 

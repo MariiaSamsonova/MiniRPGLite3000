@@ -15,7 +15,7 @@ public /*abstract*/ class Enemy extends Combatant {//TODO добавить ря�
     @Override
     public void makeMove(Game game) {
         while (true){
-            int randomPlayer = (int) Math.round(Math.random() * (game.getPlayersNumber() - 1));
+            int randomPlayer = (int) Math.round(Math.random() * (game.countHeroes() - 1));
             if(game.combatants.get(randomPlayer).isAlive())
             {
                 Hero hero = (Hero) game.combatants.get(randomPlayer);
@@ -25,6 +25,7 @@ public /*abstract*/ class Enemy extends Combatant {//TODO добавить ря�
             }
         }
     }
+
 
 
 }

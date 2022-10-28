@@ -5,7 +5,7 @@ public class Armor {
     private int state;
     double damagePart;
 
-    Armor(){
+    public Armor(){
         this.state = 100;
         this.damagePart = 0.8;
     }

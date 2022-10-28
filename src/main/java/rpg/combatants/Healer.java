@@ -1,11 +1,15 @@
 package rpg.combatants;
 
-public class Healer extends Hero {
+import rpg.Game;
+import rpg.stuff.equipment.weapon.HealerStaff;
 
-    Healer(String name){
+public class Healer extends SpellCaster {
+
+    public Healer(String name){
         super(name);
         this.sign = "\uD83E\uDDDD";
-        //this.items.add(null);
+        this.weapon = new HealerStaff();
     }//each has weapon, armor, food and potion
+
 
 }

@@ -1,29 +1,45 @@
 package rpg.combatants;
 
 import rpg.Game;
+import rpg.stuff.equipment.armor.Armor;
 import rpg.stuff.equipment.weapon.Weapon;
-
-import java.util.ArrayList;
-import java.util.List;
+import utils.InputParser;
 
 public abstract class Hero extends Combatant {
 
+    Weapon weapon;
+    private Armor armor;
+    int damage;
 
-
-
-    List<Weapon> weapons;
     public Hero(String name) {
         super(name);
-        this.weapons = new ArrayList<Weapon>();
-        //this.equipment.add(new Armor());
+        this.armor = new Armor();
+        this.damage = 15;
     }//each has weapon, armor, food and potion
 
     @Override
     public void makeMove(Game game)
     {
-        System.out.println("Player " + this.name + " make move");
-        game.choseEnemy().beHit(50);//TODO разные для разных классов
+        printMoveInfo(game.ip);
+        hit(game);
 
+    }
+
+    public void printMoveInfo(InputParser ip){
+        ip.print("Player " + this.name + " make move");
+        ip.print("Your weapon:" + weapon.toString());
+    }
+   // public abstract void hitSpecifically(Game game);
+
+    public void hit(Game game){
+        game.choseEnemy().beHit(this.damage + this.weapon.getPlusDamage());
+    }
+
+    public void heal() {
+        this.health += 50;
+        if(this.health > 100){
+            this.health = 100;
+        }
     }
 
 

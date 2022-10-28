@@ -1,11 +1,18 @@
 package rpg.combatants;
 
-public class Mage extends Hero {
+import rpg.Game;
+import rpg.stuff.equipment.weapon.MageStaff;
+import rpg.stuff.equipment.weapon.Staff;
 
+public class Mage extends SpellCaster {
 
-    Mage(String name){
+    public Mage(String name){
         super(name);
         this.sign = "\uD83E\uDDD9";
+        this.weapon = new MageStaff();
     }
+
+
+
 
 }

@@ -26,7 +26,7 @@ public class UTest {
         heroesClasses.add(Game.createHero("Warrior", null)); playersNumber++;
 
         game.setHeroes(heroesClasses);
-        assertEquals(playersNumber, game.getPlayersNumber());
+        assertEquals(playersNumber, game.countHeroes());
     }
 
     @Test
@@ -34,13 +34,13 @@ public class UTest {
     {
         game.setEnemies(playersNumber);
 
-        assertEquals(playersNumber, game.getEnemiesNumber());
+        assertEquals(playersNumber, game.countEnemies());
 
         for(int i = 1; i < 5; i++)
         {
             game.endFight();
             game.setEnemies(playersNumber);
-            assertEquals(playersNumber + i, game.getEnemiesNumber());
+            assertEquals(playersNumber + i, game.countEnemies());
         }
 
 
