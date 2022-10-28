@@ -27,7 +27,7 @@ public abstract class Hero extends Combatant {
 
     public void printMoveInfo(InputParser ip){
         ip.print("Player " + this.name + " make move");
-        ip.print("Your weapon:" + weapon.toString());
+        ip.print("Your weapon:" + weapon.toString() + ". Damage: " + (this.damage + weapon.getPlusDamage()));
     }
    // public abstract void hitSpecifically(Game game);
 
@@ -42,7 +42,16 @@ public abstract class Hero extends Combatant {
         }
     }
 
+    @Override
+    public void beHit(int percent) {
+        if(armor.isServiceable())
+        {
+            this.armor.beHit(percent);
+        }
+        else super.beHit(percent);
 
+
+    }
     //make move
     // атаковать,
     // защищаться

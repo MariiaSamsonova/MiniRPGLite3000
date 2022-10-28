@@ -19,4 +19,7 @@ public abstract class Weapon {
         return this.sign;
     }
 
+    public int getHeal(){
+        return 0;
+    }
 }

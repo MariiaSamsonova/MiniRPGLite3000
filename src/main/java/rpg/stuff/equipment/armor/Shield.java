@@ -6,5 +6,6 @@ public class Shield extends Armor{
     {
         super();
         this.damagePart *= 0.5;
+        this.sign += "\uD83D\uDEE1";
     }
 }

@@ -14,6 +14,7 @@ abstract class SpellCaster extends Hero {
     @Override
     public void makeMove(Game game){
         printMoveInfo(game.ip);
+        game.ip.print("Heal: " + this.weapon.getHeal());
         game.ip.print("Enter 0 to hit or 1 to heal");
         if(game.ip.getInteger() == 0){
             hit(game);

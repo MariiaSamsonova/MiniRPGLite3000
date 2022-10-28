@@ -11,7 +11,10 @@ public abstract class Staff extends Weapon{
         this.sign = "⚚";
     }
 
-
+    @Override
+    public int getHeal(){
+        return this.heal;
+    }
 
 
 
