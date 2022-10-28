@@ -6,7 +6,6 @@ public abstract class Staff extends Weapon{
     int heal;
     public Staff()
     {
-        this.plusDamage += 10;
         this.heal = 10;
         this.sign = "⚚";
     }

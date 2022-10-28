@@ -4,7 +4,7 @@ public class HealerStaff extends Staff{
 
     public HealerStaff(){
         super();
-        this.heal += 10;
+        this.heal += 20;
     }
 
 }

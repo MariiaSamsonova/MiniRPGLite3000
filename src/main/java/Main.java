@@ -36,7 +36,7 @@ public class Main {
 
             game.ip.doSomethingToContinue();
             game.ip.print("Fight №" + game.getFightNumber());
-            Thread.sleep(1000);
+            Thread.sleep(700);
             while (game.countHeroes() > 0 && game.countEnemies() > 0)//1 fight
             {
                 List<Integer> order = game.setMoveOrder();

@@ -8,7 +8,7 @@ import utils.InputParser;
 public abstract class Hero extends Combatant {
 
     Weapon weapon;
-    private Armor armor;
+    protected Armor armor;
     int damage;
 
     public Hero(String name) {
@@ -25,9 +25,17 @@ public abstract class Hero extends Combatant {
 
     }
 
-    public void printMoveInfo(InputParser ip){
+    public void printMoveInfo(InputParser ip) {
         ip.print("Player " + this.name + " make move");
-        ip.print("Your weapon:" + weapon.toString() + ". Damage: " + (this.damage + weapon.getPlusDamage()));
+        try {
+            Thread.sleep(700);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        ip.print("Your weapon: " + weapon.toString() + ". Damage: " + (this.damage + weapon.getPlusDamage()));
+        ip.print("Your armor: " + this.armor + ". " +
+                        "State: " + this.armor.getState() + "%. " +
+                        "Protection: " + (int)(100 - this.armor.getDamagePart() * 100) + "%");
     }
    // public abstract void hitSpecifically(Game game);
 
@@ -44,9 +52,11 @@ public abstract class Hero extends Combatant {
 
     @Override
     public void beHit(int percent) {
-        if(armor.isServiceable())
+        if(this.armor.isServiceable())
         {
-            this.armor.beHit(percent);
+            int rest = this.armor.beHit(percent);
+            super.beHit((int)(percent * this.armor.getDamagePart()));
+            super.beHit(rest);
         }
         else super.beHit(percent);
 

@@ -1,7 +1,7 @@
 package rpg.stuff.equipment.armor;
 
 public class Armor {
-    String sign = "";
+    String sign = "simple armor";
 
     private int state;
     double damagePart;
@@ -17,9 +17,9 @@ public class Armor {
     public Boolean isServiceable(){
         if(this.state > 0)
         {
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     @Override
@@ -27,7 +27,13 @@ public class Armor {
         return this.sign;
     }
 
-    public void beHit(int damage){
-        this.state -= damage * this.damagePart;
+    public int beHit(int damage){
+        this.state -= damage;
+        if(this.state < 0) return -1 * this.state;
+        return 0;
+    }
+
+    public int getState() {
+        return this.state;
     }
 }
