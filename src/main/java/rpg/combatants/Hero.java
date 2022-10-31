@@ -68,9 +68,12 @@ public abstract class Hero extends Combatant {
 
     public void eat(Game game)
     {
-        game.food.use();
-        this.health += 15;
-        if(this.health > 100) this.health = 100;
+        if(game.food.left())
+        {
+            game.food.use();
+            this.health += 15;
+            if(this.health > 100) this.health = 100;
+        }
     }
 
 
