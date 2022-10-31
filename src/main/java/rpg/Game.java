@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Game {
+    private int n;
     public static InputParser ip = new ConsoleParser();//TODO or GUIParser| переименовать
     private int fight;
     public List<Combatant> combatants;//TODO в порядке хода
@@ -38,6 +39,7 @@ public class Game {
     }// TODO на последнем уровне босс
 
     public void setHeroes(List<Hero> heroesClasses) {
+        this.n = heroesClasses.size();
         this.combatants.addAll(heroesClasses);
         this.food = new Food(countHeroes());//TODO diff amount
         this.potions = new Potions(countHeroes());
@@ -61,10 +63,16 @@ public class Game {
     }
 
     public Enemy choseEnemy() {
-        InputParser ip = new ConsoleParser();
-        ip.print("Enter the number of enemy whom you want to hit");
-        int enemyNumber = ip.getInteger();
-        return (Enemy) this.combatants.get(countHeroes() + enemyNumber - 1);
+        while (true){
+            InputParser ip = new ConsoleParser();
+            ip.print("Enter the number of enemy whom you want to hit");
+            int enemyNumber = ip.getInteger();
+            if(enemyNumber <= this.n + this.fight && this.combatants.get(countHeroes() + enemyNumber - 1).isAlive())
+            {
+                return (Enemy) this.combatants.get(countHeroes() + enemyNumber - 1);
+            }
+        }
+
     }
 
     public int countEnemies() {
@@ -112,16 +120,18 @@ public class Game {
 
 
     public Hero choseHero() {
-        InputParser ip = new ConsoleParser();
-        ip.print("Enter the name of hero whom you want to heal");
-        String heroName = ip.getString();
-        for (Combatant hero : this.combatants) {
-            if (hero.getName().equals(heroName)) {
-                return (Hero) hero;
+        while (true){
+            InputParser ip = new ConsoleParser();
+            ip.print("Enter the name of hero whom you want to heal");
+            String heroName = ip.getString();
+            for (Combatant hero : this.combatants) {
+                if (hero.getName().equals(heroName)) {
+                    return (Hero) hero;
+                }
+                if (hero instanceof Enemy) break;
             }
-            if (hero instanceof Enemy) return null;
         }
-        return null;
+
     }
 
     public void printGameInfo() {

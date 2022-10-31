@@ -17,7 +17,6 @@ public class UTest {
     @Test
     public void testPlayersNumber()
     {
-        ArrayList<String> strings = new ArrayList<>();
         List<Hero> heroesClasses = new ArrayList<Hero>();
         heroesClasses.add(Game.createHero("Mage", null)); playersNumber++;
         heroesClasses.add(Game.createHero("Mage", null)); playersNumber++;

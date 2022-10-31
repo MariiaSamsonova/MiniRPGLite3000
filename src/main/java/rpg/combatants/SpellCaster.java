@@ -26,6 +26,7 @@ abstract class SpellCaster extends Hero {
         switch (action) {
             case 3:
                 if(this.mana > 10){
+                    this.mana -= 10;
                     hit(game);
                 }
                 return;
@@ -33,7 +34,10 @@ abstract class SpellCaster extends Hero {
                 eat(game);
                 return;
             case 2:
-                game.choseHero().heal();
+                if(this.mana > 10){
+                    this.mana -= 10;
+                    game.choseHero().heal();
+                }
                 return;
             case 0:
                 usePotion(game);
