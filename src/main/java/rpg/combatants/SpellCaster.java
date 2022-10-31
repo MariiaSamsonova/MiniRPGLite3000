@@ -15,17 +15,33 @@ abstract class SpellCaster extends Hero {
 
     @Override
     public void makeMove(Game game) {
+
+        game.printGameInfo();
         printMoveInfo(game.ip);
-        if (mana >= 10) {
-            game.ip.print("Heal: " + this.weapon.getHeal());
-            game.ip.print("Enter 0 to hit or 1 to heal");
-            this.mana -= 25;
-            if (game.ip.getInteger() == 0) {
+        game.ip.print("Heal: " + this.weapon.getHeal());
+        game.ip.print("0 - hit, 1 - eat(+25 health), 2 - heal, 3 - use potion (+50 mana)");
+
+        int action = game.ip.getInteger();
+        switch (action) {
+            case 0:
                 hit(game);
-            } else {
+                return;
+            case 1:
+                eat(game);
+                return;
+            case 2:
                 game.choseHero().heal();
-            }
+                return;
+            case 3:
+                usePotion(game);
+                return;
         }
+
+    }
+
+    private void usePotion(Game game) {
+        game.potions.use();
+        this.mana += 50;
     }
 
     @Override

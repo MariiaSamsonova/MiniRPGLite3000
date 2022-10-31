@@ -18,13 +18,27 @@ public abstract class Hero extends Combatant {
     }//each has weapon, armor, food and potion
 
     @Override
-    public void makeMove(Game game)
-    {
+    public void makeMove(Game game) throws Exception {//TODO убрать Exception -> safe
         game.printGameInfo();
         printMoveInfo(game.ip);
-        hit(game);
+        game.ip.print("0 - hit, 1 - eat(+25 health)");
+
+        int action = game.ip.getInteger();
+        switch (action) {
+            case 0:
+                hit(game);
+                return;
+            case 1:
+                eat(game);
+                return;
+            default:
+                throw new Exception();
+        }
+
 
     }
+
+
 
     public void printMoveInfo(InputParser ip) {
         ip.print("Player " + this.name + " make move");
@@ -50,6 +64,7 @@ public abstract class Hero extends Combatant {
             this.health = 100;
         }
     }
+
 
     public void eat(Game game)
     {
@@ -77,7 +92,7 @@ public abstract class Hero extends Combatant {
     // TODO защищаться
 
     // или даже использовать расходные материалы, такие как поедание lembas1 или другую пищу, чтобы восстановить свою жизнь,
-    // или выпить зелье, чтобы восстановить ману заклинателей
+    // TODO или выпить зелье, чтобы восстановить ману заклинателей
 
 
 

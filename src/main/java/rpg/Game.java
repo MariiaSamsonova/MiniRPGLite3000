@@ -12,7 +12,7 @@ import java.util.List;
 public class Game {
     public static InputParser ip = new ConsoleParser();//TODO or GUIParser| переименовать
     private int fight;
-    public List<Combatant> combatants;
+    public List<Combatant> combatants;//TODO в порядке хода
     public Food food;
     public Potions potions;
 

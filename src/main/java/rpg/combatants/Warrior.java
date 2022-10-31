@@ -26,7 +26,7 @@ public class Warrior extends Hero {
             }
             ip.print("Your weapon:" + weapon.toString() + ". Damage: " + (this.damage + weapon.getPlusDamage()));
             ip.print("Your armor:" + this.armor + " + " + this.shield + ". " +
-                    "State: " + this.armor.getState() + "%. " +
+                    "State: " + this.shield.getState() + "%. " +
                     "Protection: " + (int)((1 - this.shield.getDamagePart()) * 100) + "%");
         }
         else super.printMoveInfo(ip);

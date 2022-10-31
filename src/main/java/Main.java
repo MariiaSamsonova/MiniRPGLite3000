@@ -8,7 +8,7 @@ import java.util.List;
 public class Main {
 
     InputParser ip;
-    public static void main(String args[]) throws InterruptedException {//TODO это должно быть в Game но это не точно
+    public static void main(String args[]) throws Exception {//TODO это должно быть в Game но это не точно // TODO delete Exception
         Game game = new Game();
 
         game.ip.print("Enter number of heroes");

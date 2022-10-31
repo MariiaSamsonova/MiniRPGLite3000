@@ -16,7 +16,7 @@ public abstract class Combatant {
 
     int damage;
 
-    public abstract void makeMove(Game game); //return the amount of damage
+    public abstract void makeMove(Game game) throws Exception; //return the amount of damage
 
     // если противник не выбран ход по типу: похилить, покушать, надеть доспехи
     public boolean isAlive() {
