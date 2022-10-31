@@ -14,6 +14,8 @@ public abstract class Combatant {
     String sign;
     int health = 100;
 
+    int damage;
+
     public abstract void makeMove(Game game); //return the amount of damage
 
     // если противник не выбран ход по типу: похилить, покушать, надеть доспехи

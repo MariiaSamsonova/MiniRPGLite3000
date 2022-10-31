@@ -31,16 +31,14 @@ public class Main {
 
         while (game.getFightNumber() < 5 && game.countHeroes() > 0) {//default number of fights = 5 TODO set number of fights
             game.setEnemies(n);
-            game.setMoveOrder();
             game.ip.print(game.combatants.toString());
 
             game.ip.doSomethingToContinue();
             game.ip.print("Fight №" + game.getFightNumber());
             Thread.sleep(700);
+            List<Integer> order = game.setMoveOrder();
             while (game.countHeroes() > 0 && game.countEnemies() > 0)//1 fight
             {
-                List<Integer> order = game.setMoveOrder();
-
                 for (int i : order) {
                     if (game.combatants.get(i).isAlive()) {
                         game.combatants.get(i).makeMove(game);

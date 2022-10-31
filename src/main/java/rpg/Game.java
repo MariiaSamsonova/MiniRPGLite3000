@@ -1,12 +1,9 @@
 package rpg;
 
-import com.sun.jdi.IntegerValue;
+
 import rpg.combatants.*;
-import rpg.stuff.consumables.Consumable;
-import rpg.stuff.consumables.Food;
-import rpg.stuff.consumables.Potions;
-import utils.ConsoleParser;
-import utils.InputParser;
+import rpg.stuff.consumables.*;
+import utils.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,15 +12,13 @@ import java.util.List;
 public class Game {
     public static InputParser ip = new ConsoleParser();//TODO or GUIParser| переименовать
     private int fight;
-    private List<Consumable> consumables;
     public List<Combatant> combatants;
-    private Food food;
-    private Potions potions;
+    public Food food;
+    public Potions potions;
 
     public Game() {
         this.fight = 0;
         this.combatants = new ArrayList<>();
-        this.consumables = new ArrayList<>();
     }
 
     public int getFightNumber() {
@@ -44,7 +39,7 @@ public class Game {
 
     public void setHeroes(List<Hero> heroesClasses) {
         this.combatants.addAll(heroesClasses);
-        this.food = new Food(countHeroes());
+        this.food = new Food(countHeroes());//TODO diff amount
         this.potions = new Potions(countHeroes());
     }
 
@@ -127,5 +122,9 @@ public class Game {
             if (hero instanceof Enemy) return null;
         }
         return null;
+    }
+
+    public void printGameInfo() {
+        this.ip.print("Food: " + this.food.toString() + " Potions:" + this.potions.toString());
     }
 }

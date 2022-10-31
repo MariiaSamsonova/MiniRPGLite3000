@@ -1,6 +1,5 @@
 package rpg.combatants;
 
-import rpg.Game;
 import rpg.stuff.equipment.armor.Shield;
 import rpg.stuff.equipment.weapon.Sword;
 import utils.InputParser;
@@ -26,7 +25,7 @@ public class Warrior extends Hero {
                 throw new RuntimeException(e);
             }
             ip.print("Your weapon:" + weapon.toString() + ". Damage: " + (this.damage + weapon.getPlusDamage()));
-            ip.print("Your armor:" + this.armor + ", " + this.shield + ". " +
+            ip.print("Your armor:" + this.armor + " + " + this.shield + ". " +
                     "State: " + this.armor.getState() + "%. " +
                     "Protection: " + (int)((1 - this.shield.getDamagePart()) * 100) + "%");
         }

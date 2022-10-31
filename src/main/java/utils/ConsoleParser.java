@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class ConsoleParser implements InputParser{
 
-    Scanner sc ;//TODO safescanner
+    Scanner sc ;//TODO safe-scanner
     @Override
     public int getInteger() {
         sc = new Scanner(System.in);

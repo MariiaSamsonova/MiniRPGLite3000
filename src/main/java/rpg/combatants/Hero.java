@@ -9,7 +9,7 @@ public abstract class Hero extends Combatant {
 
     Weapon weapon;
     protected Armor armor;
-    int damage;
+
 
     public Hero(String name) {
         super(name);
@@ -20,6 +20,7 @@ public abstract class Hero extends Combatant {
     @Override
     public void makeMove(Game game)
     {
+        game.printGameInfo();
         printMoveInfo(game.ip);
         hit(game);
 
@@ -50,6 +51,14 @@ public abstract class Hero extends Combatant {
         }
     }
 
+    public void eat(Game game)
+    {
+        game.food.use();
+        this.health += 15;
+        if(this.health > 100) this.health = 100;
+    }
+
+
     @Override
     public void beHit(int percent) {
         if(this.armor.isServiceable())
@@ -62,9 +71,10 @@ public abstract class Hero extends Combatant {
 
 
     }
+
     //make move
     // атаковать,
-    // защищаться
+    // TODO защищаться
 
     // или даже использовать расходные материалы, такие как поедание lembas1 или другую пищу, чтобы восстановить свою жизнь,
     // или выпить зелье, чтобы восстановить ману заклинателей
@@ -72,11 +82,11 @@ public abstract class Hero extends Combatant {
 
 
     //Охотник стреляет стрелами (пока у него не останется ни одной),
-    //Воин бьет в ближнем бою,
+    //Воин бьет в TODO ближнем бою,
     // Целитель исцеляет заклинаниями,
     // а Маг использует магию против врагов.
 
-    //Если команда выигрывает бой, каждый персонаж может выбрать один из нескольких вариантов:
+    // TODO Если команда выигрывает бой, каждый персонаж может выбрать один из нескольких вариантов:
     //• увеличить наносимый вами урон;
     //• повысить нашу устойчивость к атакам;
     //• повысить эффективность зелий и еды;

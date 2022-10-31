@@ -8,6 +8,7 @@ public /*abstract*/ class Enemy extends Combatant {//TODO добавить ря�
     public Enemy(String name) {
         super(name);
         this.sign = "\uD83D\uDC7E";
+        this.damage = 10;
     }
 
 
@@ -20,7 +21,7 @@ public /*abstract*/ class Enemy extends Combatant {//TODO добавить ря�
             {
                 Hero hero = (Hero) game.combatants.get(randomPlayer);
                 System.out.println("Enemy №" + getName() + " hit " + hero.getName());
-                game.combatants.get(randomPlayer).beHit(20);
+                game.combatants.get(randomPlayer).beHit(this.damage);
                 break;
             }
         }

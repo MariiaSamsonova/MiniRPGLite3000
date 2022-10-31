@@ -10,14 +10,15 @@ public abstract class Consumable {
 
     public Boolean left()
     {
-        if(this.amount > 0){
-            return true;
-        }
-        else return false;
+        return (this.amount > 0);
     }
 
     @Override
     public String toString(){
-        return this.sign;
+        return this.sign.repeat(this.amount);
+    }
+
+    public void use() {
+        this.amount--;
     }
 }
