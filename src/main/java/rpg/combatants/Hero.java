@@ -17,6 +17,10 @@ public abstract class Hero extends Combatant {
         this.damage = 15;
     }//each has weapon, armor, food and potion
 
+    public void increaseDamage(int plusDamage){
+        this.damage += plusDamage;
+    }
+
     @Override
     public void makeMove(Game game) throws Exception {//TODO убрать Exception -> safe
         game.printGameInfo();
@@ -71,10 +75,11 @@ public abstract class Hero extends Combatant {
         if(game.food.left())
         {
             game.food.use();
-            this.health += 15;
+            this.health += game.food.getHealthPoints();
             if(this.health > 100) this.health = 100;
         }
     }
+
 
 
     @Override
@@ -90,12 +95,41 @@ public abstract class Hero extends Combatant {
 
     }
 
+    public void improveArmor() {
+        this.armor.improve(0.1);
+    }
+
+    public void doAction(Game game) {
+        game.ip.print("0 - increase damage(+10), 1 - improve armor(+10%), " +
+                "2 - improve food(+10 health), 3 - improve points(+10 mana), 4 - add food, 5 - add points");
+        switch (game.ip.getInteger()){
+            case 0:
+                increaseDamage(10);//10?
+                return;
+            case 1:
+                improveArmor();
+                return;
+            case 2:
+                game.food.improve();
+                return;
+            case 3:
+                game.potions.improve();
+                return;
+            case 4:
+                game.food.add(3);
+                return;
+            case 5:
+                game.potions.add(3);
+        }
+    }
+    //• уменьшить расход маны для mage and healer, или увеличить эффективность их заклинаний.
+
     //make move
     // атаковать,
     // TODO защищаться
 
     // или даже использовать расходные материалы, такие как поедание lembas1 или другую пищу, чтобы восстановить свою жизнь,
-    // TODO или выпить зелье, чтобы восстановить ману заклинателей
+    // или выпить зелье, чтобы восстановить ману заклинателей
 
 
 

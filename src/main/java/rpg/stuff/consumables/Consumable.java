@@ -21,4 +21,8 @@ public abstract class Consumable {
     public void use() {
         this.amount--;
     }
+
+    public void add(int amount){
+        this.amount += amount;
+    }
 }

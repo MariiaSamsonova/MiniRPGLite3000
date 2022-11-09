@@ -110,6 +110,16 @@ public class Game {
 
         if (this.countHeroes() > 0) {
             ip.print("WIN in the fight №" + (this.fight + 1));
+
+            for(int i = 0; i < countHeroes(); i ++)
+            {
+                Hero hero = (Hero) combatants.get(i);
+                if(hero.isAlive()){
+                    hero.doAction(this);
+
+                }
+            }
+
             ip.print("Next fight: ");
         } else {
             ip.print("GameOver");

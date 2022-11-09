@@ -36,4 +36,9 @@ public class Armor {
     public int getState() {
         return this.state;
     }
+
+    public void improve(double percent){
+        this.damagePart -= percent;
+    }
+
 }

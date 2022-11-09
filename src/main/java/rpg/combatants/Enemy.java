@@ -20,7 +20,7 @@ public /*abstract*/ class Enemy extends Combatant {//TODO добавить ря�
             if(game.combatants.get(randomPlayer).isAlive())
             {
                 Hero hero = (Hero) game.combatants.get(randomPlayer);
-                System.out.println("Enemy №" + getName() + " hit " + hero.getName());
+                game.ip.print("Enemy №" + getName() + " hit " + hero.getName());
                 game.combatants.get(randomPlayer).beHit(this.damage);
                 break;
             }

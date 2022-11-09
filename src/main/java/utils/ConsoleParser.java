@@ -5,11 +5,20 @@ import java.util.Scanner;
 
 public class ConsoleParser implements InputParser{
 
-    Scanner sc ;//TODO safe-scanner
+    Scanner sc ;
     @Override
     public int getInteger() {
-        sc = new Scanner(System.in);
-        return sc.nextInt();
+        while(true)
+        {
+            try {
+                sc = new Scanner(System.in);
+                return sc.nextInt();
+            } catch (Exception ex){
+                System.out.println("Try again");
+            }
+
+        }
+
     }
 
     @Override
@@ -19,8 +28,14 @@ public class ConsoleParser implements InputParser{
 
     @Override
     public String getString() {
-        sc = new Scanner(System.in);
-        return sc.nextLine();
+        while (true) {
+            try {
+                sc = new Scanner(System.in);
+                return sc.nextLine();
+            } catch (Exception ex) {
+                System.out.println("Try again");
+            }
+        }
     }
 
     @Override

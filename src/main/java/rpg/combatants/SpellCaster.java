@@ -47,7 +47,10 @@ abstract class SpellCaster extends Hero {
 
     private void usePotion(Game game) {
         game.potions.use();
-        this.mana += 50;
+        this.mana += game.potions.getManaPoints();
+        if(this.mana > 100){
+            this.mana = 100;
+        }
     }
 
     @Override
@@ -65,4 +68,29 @@ abstract class SpellCaster extends Hero {
                 "Protection: " + (int) (100 - this.armor.getDamagePart() * 100) + "%");
     }
 
+    @Override
+    public void doAction(Game game) {
+        game.ip.print("0 - increase damage(+10), 1 - improve armor(+10%), " +
+                "2 - improve food(+10 health), 3 - improve points(+10 mana), 4 - add food, 5 - add points" +
+                "6 - increase damage(+10)");
+        switch (game.ip.getInteger()){
+            case 0:
+                increaseDamage(10);//10?
+                return;
+            case 1:
+                improveArmor();
+                return;
+            case 2:
+                game.food.improve();
+                return;
+            case 3:
+                game.potions.improve();
+                return;
+            case 4:
+                game.food.add(3);
+                return;
+            case 5:
+                game.potions.add(3);
+        }
+    }
 }

@@ -22,6 +22,9 @@ public class Bow extends Weapon{
     public void makeShoot(){
         this.arrows.use();
     }
+    public void addArrows(int n){
+        arrows.add(n);
+    }
 
     @Override
     public String toString(){

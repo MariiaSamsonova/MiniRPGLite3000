@@ -35,5 +35,34 @@ public class Hunter extends Hero {
         if(bow.isServiceable()) bow.makeShoot();
     }
 
+    @Override
+    public void doAction(Game game) {
+        game.ip.print("0 - increase damage(+10), 1 - improve armor(+10%), " +
+                "2 - improve food(+10 health), 3 - improve points(+10 mana), 4 - add food(3), 5 - add points(3)" +
+                "6 - add arrows(10)");//TODO amount(?)
+        switch (game.ip.getInteger()){
+            case 0:
+                increaseDamage(10);
+                return;
+            case 1:
+                improveArmor();
+                return;
+            case 2:
+                game.food.improve();
+                return;
+            case 3:
+                game.potions.improve();
+                return;
+            case 4:
+                game.food.add(3);
+                return;
+            case 5:
+                game.potions.add(3);
+                return;
+            case 6:
+                Bow bow = (Bow) this.weapon;
+                bow.addArrows(10);;
+        }
+    }
 
 }
