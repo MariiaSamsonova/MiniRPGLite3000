@@ -4,7 +4,7 @@ public class Sword extends Weapon {
 
     public Sword()
     {
-        this.plusDamage += 75;//TODO 10
+        this.plusDamage += 10;//TODO 10
         this.sign = "⚔";
     }
 }

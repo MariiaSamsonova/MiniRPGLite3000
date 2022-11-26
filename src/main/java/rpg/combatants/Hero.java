@@ -25,19 +25,22 @@ public abstract class Hero extends Combatant {
     public void makeMove(Game game) throws Exception {//TODO убрать Exception -> safe
         game.printGameInfo();
         printMoveInfo(game.ip);
-        game.ip.print("0 - hit, 1 - eat(+25 health)");
+        while(true){
+            game.ip.print("0 - hit, 1 - eat(+25 health)");
 
-        int action = game.ip.getInteger();
-        switch (action) {
-            case 0:
-                hit(game);
-                return;
-            case 1:
-                eat(game);
-                return;
-            default:
-                throw new Exception();
+            int action = game.ip.getInteger();
+            switch (action) {
+                case 0:
+                    hit(game);
+                    return;
+                case 1:
+                    eat(game);
+                    return;
+                default:
+                    game.ip.print("Wrong input, try again");
+            }
         }
+
 
 
     }
